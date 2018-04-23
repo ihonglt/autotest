@@ -6,11 +6,7 @@ ENV TZ "Asia/Shanghai"
 
 ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
 
-<<<<<<< HEAD
 ENV PACKAGE_URL http://rdsbak-hzi-v2.oss-cn-hangzhou-i.aliyuncs.com/custins4888969/hins4087993_data_20180421151645.tar.gz?OSSAccessKeyId=LTAITfQ7krsrEwRn&Expires=1524546698&Signature=XVNXEnJOswBexjp%2FtL%2BWYxC%2Bd3g%3D
-=======
-ENV PACKAGE_URL http://rdsbak-hzi-v2.oss-cn-hangzhou-i.aliyuncs.com/custins4888969/hins4087993_data_20180421151645.tar.gz?OSSAccessKeyId=LTAITfQ7krsrEwRn&Expires=1524386165&Signature=CF0V2EaWWnuOhvg1ck0fYr5b%2B7A%3D
->>>>>>> 5929cd2a8c996aa9714a408b6a29aa94e0cf2cac
 
 # RUN apt-get update
 # RUN apt-get install -y net-tools
