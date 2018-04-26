@@ -9,8 +9,14 @@ RUN set -x \
 	zlib1g-dev \
 	&& apt-get purge -y --auto-remove
 
-RUN pecl install memcache redis \
-    && docker-php-ext-enable memcache redis
+RUN pecl install memcache \
+    && docker-php-ext-enable memcache
+# RUN curl 'http://pecl.php.net/get/memcache-2.2.7.tgz' -o memcache-2.2.7.tgz
+# RUN pecl install memcache-2.2.7.tgz \
+#     && docker-php-ext-enable memcache
+
+RUN pecl install redis && docker-php-ext-enable redis
+RUN docker-php-ext-install pcntl pdo_mysql
 
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN echo "root:server123&*(" | chpasswd

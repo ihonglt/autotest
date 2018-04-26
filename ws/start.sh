@@ -1,0 +1,1 @@
+php ./dsmp/schemas/serverws.php --ws /var/run/php7.0-swoole.sock -f /var/log/swoole.log
