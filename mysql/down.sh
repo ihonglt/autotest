@@ -10,7 +10,7 @@ docker build -t leete/ali-mysql-server .
 # docker run -ti --name ali-mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d leete/ali-mysql-server
 # docker run -ti --name ali-mysql-server -p 3306:3306 -d -v /var/mysql/data:/home/mysql/data --restart always leete/ali-mysql-server \
 # docker run -ti --name ali-mysql-server -p 3306:3306 -d -v /var/mysql/data:/home/mysql/data leete/ali-mysql-server \
-docker run -ti --name ali-mysql-server -p 3306:3306 -d leete/ali-mysql-server
+docker run -ti --name ali-mysql-server -p 3306:3306 -d --restart always leete/ali-mysql-server
 # mysqld_safe --defaults-file=/home/mysql/data/backup-my.cnf --user=mysql --datadir=/home/mysql/data
 
 sleep 3
