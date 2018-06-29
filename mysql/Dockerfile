@@ -6,7 +6,10 @@ ENV TZ "Asia/Shanghai"
 
 ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
 
-ENV PACKAGE_URL http://rdsbak-hzi-v2.oss-cn-hangzhou-i.aliyuncs.com/custins2430373/hins4466495_data_20180503132631.tar.gz?OSSAccessKeyId=LTAITfQ7krsrEwRn&Expires=1525423385&Signature=7aBd2r%2FK7KAAWLXEptYVLi6uTRw%3D
+ARG RDS=alijoin
+# ARG url
+ARG PACKAGE_URL=http://rdsbak-hzi-v2.oss-cn-hangzhou-i.aliyuncs.com/custins4888969/hins4498759_data_20180627154150.tar.gz?OSSAccessKeyId=LTAITfQ7krsrEwRn&Expires=1530252563&Signature=FTIS0R6gDXcX0xPd8bQVQA5D2EE%3D
+# ENV PACKAGE_URL http://rdsbak-hzi-v2.oss-cn-hangzhou-i.aliyuncs.com/custins2430373/hins4466495_data_20180626132638.tar.gz?OSSAccessKeyId=LTAITfQ7krsrEwRn&Expires=1530177021&Signature=isbUi1ebHs2XfzXSdIHl%2Fvn%2FRZc%3D
 
 # RUN apt-get update
 # RUN apt-get install -y net-tools
@@ -48,8 +51,9 @@ ADD http://oss.aliyuncs.com/aliyunecs/rds_backup_extract.sh /root
 # RUN chmod +x /root/rds_backup_extract.sh
 
 RUN echo "#!/bin/bash" > /root/down.sh
-RUN echo "wget -c \"$PACKAGE_URL\" -O /root/alimargin.tar.gz" >> /root/down.sh
-RUN echo "bash rds_backup_extract.sh -f /root/alimargin.tar.gz -C /home/mysql/data" >> /root/down.sh
+RUN echo "wget -c \"$PACKAGE_URL\" -O /root/$RDS.tar.gz" >> /root/down.sh
+RUN echo "bash rds_backup_extract.sh -f /root/$RDS.tar.gz -C /home/mysql/data" >> /root/down.sh
+RUN echo "rm /root/$RDS.tar.gz" >> /root/down.sh
 RUN echo "innobackupex --defaults-file=/home/mysql/data/backup-my.cnf --apply-log /home/mysql/data" >> /root/down.sh
 
 # RUN groupadd mysql
